@@ -4,9 +4,6 @@ public class HomeController : Controller
 {
     public ViewResult Index()
     {
-        Product?[] products = Product.GetProducts();
-        return View(new string[] {
-            $"Name: {products[0]?.Name}, Price: { products[0]?.Price }"
-        });
+        return View(Product.GetProducts().Select(p => p?.Name));
     }
 }
